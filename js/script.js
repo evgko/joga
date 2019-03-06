@@ -35,4 +35,52 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    //Timer
+
+let deadline = '2019-03-06 09:17';
+
+function getTimeRemaning(endtime) {
+    let t = Date.parse(endtime) - Date.parse(new Date()),
+        seconds = Math.floor((t/1000) % 60),
+        minutes = Math.floor((t/1000/60) % 60),
+        hours = Math.floor((t/(1000*60*60)));
+
+        if (seconds < 10) {seconds = '0'+ seconds;}
+        if (minutes < 10) {minutes = '0'+ minutes;}
+        if (hours < 10) {hours = '0'+ hours;}
+
+        return {
+            'total' : t,
+            'seconds' : seconds,
+            'minutes' : minutes,
+            'hours' : hours
+        };
+}
+
+function setClock(id, endtime) {
+    let timer = document.getElementById(id),
+        seconds = timer.querySelector('.seconds'),
+        minutes = timer.querySelector('.minutes'),
+        hours = timer.querySelector('.hours'),
+        timeInterval = setInterval(updateClock, 1000);
+
+
+    function updateClock() {
+        let t = getTimeRemaning(endtime);
+
+        if (t.total <= 0) {
+            clearInterval(timeInterval);
+            seconds.textContent = '00';
+            minutes.textContent = '00';
+            hours.textContent = '00';
+        } else {
+            seconds.textContent = t.seconds;
+            minutes.textContent = t.minutes;
+            hours.textContent = t.hours;
+        }
+    }
+}
+
+setClock('timer', deadline);
+
 });
