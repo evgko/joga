@@ -37,7 +37,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
     //Timer
 
-let deadline = '2019-03-06 09:17';
+let deadline = '2019-03-10 09:17';
 
 function getTimeRemaning(endtime) {
     let t = Date.parse(endtime) - Date.parse(new Date()),
@@ -82,5 +82,38 @@ function setClock(id, endtime) {
 }
 
 setClock('timer', deadline);
+
+//Modal
+
+let more = document.querySelector('.more'),
+    overlay = document.querySelector('.overlay'),
+    close = document.querySelector('.popup-close'),
+    learnMore = document.querySelectorAll('.description-btn');
+
+more.addEventListener('click', function() {
+    overlay.style.display = 'block';
+    this.classList.add('more-splash');
+    document.body.style.overflow = 'hidden';
+});
+
+close.addEventListener('click', function() {
+    overlay.style.display = 'none';
+    more.classList.remove('more-splash');
+    document.body.style.overflow = '';
+});
+
+//узнать в чем проблема с info
+for (let i = 0; i < tabContent.length; i++) {
+tabContent[i].addEventListener('click', function() {
+    let target = event.target;
+    console.log(target);
+    if (target && target.classList.contains('description-btn')) {
+        overlay.style.display = 'block';
+        learnMore[i].classList.add('more-splash');
+        document.body.style.overflow = 'hidden';   
+    }
+});
+}
+
 
 });
