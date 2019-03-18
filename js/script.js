@@ -37,9 +37,9 @@ window.addEventListener('DOMContentLoaded', function() {
 
     //Timer
 
-let deadline = '2019-03-10 09:17';
+//let deadline = '2019-03-10 09:17';
 
-function getTimeRemaning(endtime) {
+function getTimeRemaning(endtime = '2019-03-20 09:17') {
     let t = Date.parse(endtime) - Date.parse(new Date()),
         seconds = Math.floor((t/1000) % 60),
         minutes = Math.floor((t/1000/60) % 60),
@@ -57,7 +57,7 @@ function getTimeRemaning(endtime) {
         };
 }
 
-function setClock(id, endtime) {
+function setClock(id, endtime = '2019-03-20 09:17') {
     let timer = document.getElementById(id),
         seconds = timer.querySelector('.seconds'),
         minutes = timer.querySelector('.minutes'),
@@ -81,7 +81,7 @@ function setClock(id, endtime) {
     }
 }
 
-setClock('timer', deadline);
+setClock('timer');
 
 //Modal
 
@@ -114,6 +114,5 @@ tabContent[i].addEventListener('click', function() {
     }
 });
 }
-
 
 });
