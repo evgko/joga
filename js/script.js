@@ -157,4 +157,42 @@ let form = document.querySelector('.main-form'),
 
     });
 
+///Form with promis
+
+// function postData(data) {
+//     return new Promise(function(resolve, reject) {
+//         let request = new XMLHttpRequest();
+//         request.open = ('POST', '../server.php');
+//         request.setRequestHeader ('Content-Type', 'application/x-www-form-urlencoded');
+    
+//         request.onreadystatechange = function(){
+//             if (request.readyState < 4){
+//                 resolve()
+//             } else if(request.readyState === 4 && request.status == 200) {
+//                 resolve()
+//             } else {
+//                 reject()
+//             }
+//         }
+
+//         request.send(data);
+    
+//     });
+// }
+
+// function clearInput() {
+//     for (let i = 0; i < input.length; i++) {
+//         input[i].value = '';
+// }
+
+// postData(formData)
+//     .then(()=> statusMessage.innerHTML = message.loading)
+//     .then(()=> {
+//         thankModal.style.display = 'block';
+//         mainModal.style.display = 'none';
+//         statusMessage.innerHTML = '';
+//     })
+//     .catch(()=> statusMessage.innerHTML = message.failure)
+//     .then(clearInput);
+
 });
